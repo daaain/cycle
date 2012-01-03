@@ -177,7 +177,7 @@ $.fn.cycle.custom = function(curr, next, opts, cb) {
 
 $.fn.cycle.transitions = {
     fade: function($cont, $slides, opts) {
-		$slides.not(':eq(0)').hide();
+		$slides.not($slides.eq(0)).hide();
 		opts.cssBefore = { opacity: 0, display: 'block' };
 		opts.cssAfter  = { display: 'none' };
 		opts.animOut = { opacity: 0 };
@@ -188,7 +188,7 @@ $.fn.cycle.transitions = {
 			$(curr).css('zIndex',opts.slideCount + (fwd === true ? 1 : 0));
 			$(next).css('zIndex',opts.slideCount + (fwd === true ? 0 : 1));
 		});
-		$slides.not(':eq(0)').hide();
+		$slides.not($slides.eq(0)).hide();
 		opts.cssBefore = { opacity: 1, display: 'block', zIndex: 1 };
 		opts.cssAfter  = { display: 'none', zIndex: 0 };
 		opts.animOut = { opacity: 0 };
@@ -219,4 +219,4 @@ $.fn.cycle.defaults = {
     timeout:       4000 
 };
 
-})(jQuery);
+})(window.jQuery || window.Zepto);
